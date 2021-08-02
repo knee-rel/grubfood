@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Grubfood WebKiosk ;){% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/main.css" %}" /> 
+    <link rel="stylesheet" href="{% static "webkiosk/about.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <main>
+        <div class="gradient">
+            <h1 class='aboutus'>About Us</h1>
+            <div class="box">
+                <p><b>Food Manager</b> is a web app that helps food companies manage customers and their food orders
+                    for the delivery service. It also helps the company to keep track of customers and the different
+                    food items that they can order from the website.</p>
+                <br>
+                <p><b>Food Manager has three major functions:</b></p>
+                <p>Managing Customer Data: The web app will allow users to add, view, edit, and delete customer
+                    data.</p>
+                <p>Managing Food Data: The web app will allow users to add, view, edit, and delete food data.</p>
+                <p>Managing Order Data: The web app will allow users to add, view, edit, and delete order data.</p>
+            </div>
+        </div>
+    </main>
+{% endblock %}

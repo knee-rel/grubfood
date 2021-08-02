@@ -1,0 +1,22 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}GrubFood - Add Order{% endblock  %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/delete.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+<main>
+    <img src="{% static 'webkiosk/images/delete-item.png' %}"  class='delete-btn'/>
+    <h1>Delete Food</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete <b>Order #{{ order.id }}</b></p>
+        <a href="{% url 'webkiosk:userorderdetails' order.id %}" class="cancel">Cancel</a>
+        <input type="submit" value="Yes" class = "confirm">
+    </form>
+</main>
+{% endblock %}

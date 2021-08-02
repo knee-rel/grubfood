@@ -1,0 +1,16 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Grubfood WebKiosk ;){% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/main.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <a href="{% url 'webkiosk:products' %}" class="back-btn">Back</a>
+    <main>
+       <h1>Cart!</h1>
+    </main>
+{% endblock %}

@@ -1,0 +1,82 @@
+main {
+  margin: 2rem;
+  min-height: calc(100vh + 4px);
+  padding: 2rem;
+}
+
+/* cards start here */
+.card-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graphic {
+  width: 20rem;
+  height: 20rem;
+}
+
+.graphic:hover {
+  width: 120px;
+  transition: all 0.3s ease;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 2rem;
+}
+
+.linking-card {
+  text-decoration: none;
+}
+
+.user-card {
+  background: #ffffff;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 2rem 1rem;
+}
+
+.customer-name {
+  color: #131313;
+  margin: 0.5rem 0rem;
+}
+
+.status {
+  margin-bottom: 0.5rem;
+}
+
+.remarks {
+  background: #d094ff;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+/* svg styles */
+.list-svg {
+  margin-right: 0.5rem;
+  stroke: #131313;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 18px;
+  height: 18px;
+  fill: none;
+}
+
+.list-svg:hover {
+  stroke: #a4bff8;
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    padding: 1rem;
+  }
+}

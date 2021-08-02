@@ -1,0 +1,119 @@
+{% extends 'base_dashboard.html' %}
+
+{% load static %}
+
+{% block pagetitle %}{% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/dashboard.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+        <main>
+            <!-- title -->
+            <div class="title">
+                <svg class="user-icon-svg" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15 15.75V14.25C15 13.4544 14.6839 12.6913 14.1213 12.1287C13.5587 11.5661 12.7956 11.25 12 11.25H6C5.20435 11.25 4.44129 11.5661 3.87868 12.1287C3.31607 12.6913 3 13.4544 3 14.25V15.75" />
+                    <path
+                        d="M9 8.25C10.6569 8.25 12 6.90686 12 5.25C12 3.59315 10.6569 2.25 9 2.25C7.34315 2.25 6 3.59315 6 5.25C6 6.90686 7.34315 8.25 9 8.25Z" />
+                </svg>
+                <div class="title-text">
+                    <h1>Hello, admin!</h1>
+                    <p>What would you like to see today?</p>
+                </div>
+            </div>
+
+            <!-- cards -->
+            <div class="card-list">
+                <div class="card">
+                    <svg class="sidemenu-svg" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15 15.75V14.25C15 13.4544 14.6839 12.6913 14.1213 12.1287C13.5587 11.5661 12.7956 11.25 12 11.25H6C5.20435 11.25 4.44129 11.5661 3.87868 12.1287C3.31607 12.6913 3 13.4544 3 14.25V15.75" />
+                        <path
+                            d="M9 8.25C10.6569 8.25 12 6.90686 12 5.25C12 3.59315 10.6569 2.25 9 2.25C7.34315 2.25 6 3.59315 6 5.25C6 6.90686 7.34315 8.25 9 8.25Z" />
+                    </svg>
+                    <div class="card-content">
+                        <p class="card-caption">Customers</p>
+                        <span class="card-number">{{ total_customers }}</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <svg class="sidemenu-svg" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15 15.75V14.25C15 13.4544 14.6839 12.6913 14.1213 12.1287C13.5587 11.5661 12.7956 11.25 12 11.25H6C5.20435 11.25 4.44129 11.5661 3.87868 12.1287C3.31607 12.6913 3 13.4544 3 14.25V15.75" />
+                        <path
+                            d="M9 8.25C10.6569 8.25 12 6.90686 12 5.25C12 3.59315 10.6569 2.25 9 2.25C7.34315 2.25 6 3.59315 6 5.25C6 6.90686 7.34315 8.25 9 8.25Z" />
+                    </svg>
+                    <div class="card-content">
+                        <p class="card-caption">Orders</p>
+                        <span class="card-number">{{ total_orders }}</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <svg class="sidemenu-svg" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0)">
+                            <path
+                                d="M6.75 16.5C7.16421 16.5 7.5 16.1642 7.5 15.75C7.5 15.3358 7.16421 15 6.75 15C6.33579 15 6 15.3358 6 15.75C6 16.1642 6.33579 16.5 6.75 16.5Z" />
+                            <path
+                                d="M15 16.5C15.4142 16.5 15.75 16.1642 15.75 15.75C15.75 15.3358 15.4142 15 15 15C14.5858 15 14.25 15.3358 14.25 15.75C14.25 16.1642 14.5858 16.5 15 16.5Z" />
+                            <path
+                                d="M0.75 0.75H3.75L5.76 10.7925C5.82858 11.1378 6.01643 11.448 6.29066 11.6687C6.56489 11.8895 6.90802 12.0067 7.26 12H14.55C14.902 12.0067 15.2451 11.8895 15.5193 11.6687C15.7936 11.448 15.9814 11.1378 16.05 10.7925L17.25 4.5H4.5" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0">
+                                <rect width="18" height="18" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <div class="card-content">
+                        <p class="card-caption">Food</p>
+                        <span class="card-number">{{ total_foods }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- daily business reports go here -->
+            <div class="reports">
+                <div class="reports-left">
+                    <div class="reports-left-title">
+                        <h1>Daily Report</h1>
+                        <img src="{% static 'webkiosk/images/histogram.png"' %}"/>
+                    </div>
+                </div>
+
+                <div class="reports-right">
+                    <div class="reports-right-title">
+                        <h1>Total Stats Report</h1>
+                        <i class="fa fa-usd" aria-hidden="true"></i>
+                    </div>
+
+                    <!-- reports-right cards go here -->
+                    <div class="reports-card">
+                        <div class="card-one">
+                            <h1>Income</h1>
+                            <p>P55,300</p>
+                        </div>
+
+                        <div class="card-two">
+                            <h1>Sales</h1>
+                            <p>P70,000</p>
+                        </div>
+
+                        <div class="card-three">
+                            <h1>Users</h1>
+                            <p>30</p>
+                        </div>
+
+                        <div class="card-four">
+                            <h1>Orders</h1>
+                            <p>101</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% endblock %}
+

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Grubfood Webkiosk{% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/main.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <!-- main content of the web page -->
+    <main>
+        <div class="top-divider">
+            <!-- adding an extra div to set a maximum width -->
+            <div class="content-divider">
+                <div class="header-caption">
+                    <h1 class="main">We provide easy solution
+                        to manage your orders for your business.</h1>
+                    <p class="desc">Food Manager is a platform for businesses to manage their inventory, why not give us
+                        a
+                        trial.
+                    </p>
+                    <a href="{% url 'webkiosk:login' %}" class="get-started">Get Started</a>
+                </div>
+
+                <div class="landing">
+                    <!-- put asset here -->
+                    <img src="{% static 'webkiosk/images/food.png' %}"  class='landing-img'/>
+                    {% comment %} <img src=" '{% static 'webkiosk/images/food.png' %}' " alt="" class='landing-img'> {% endcomment %}
+                </div>
+            </div>
+        </div>
+
+        <div class="welcome">
+            <!-- adding an extra div to put a max-width -->
+            <div class="welcome-divider">
+                <div class="graphics">
+                    <img src="{% static 'webkiosk/images/person.png' %}" alt="" class='graphics-welcome'>
+                </div>
+                <div class="welcome-caption">
+                    <h3>Welcome to Food Manager!</h3>
+                    <p>We have the best rates . Simply start your business right now. Sign up for our Affiliate program
+                        and
+                        earn commission from each business. The earnings are credited in your account instantly and can
+                        be
+                        withdrawn right away. Also note some business directions are hidden for unregistered user. To
+                        ensure
+                        to
+                        have access to all our business directions and benefits kindly sign up and verify your identity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

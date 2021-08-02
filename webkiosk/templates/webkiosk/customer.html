@@ -1,0 +1,59 @@
+{% extends 'base_dashboard.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Grubfood WebKiosk ;){% endblock %}
+
+{% block css_files %} 
+    {% comment %} <link rel="stylesheet" href="{% static "webkiosk/main.css" %}" />  {% endcomment %}
+    <link rel="stylesheet" href="{% static "webkiosk/dashboard.css" %}" />
+    <link rel="stylesheet" href="{% static "webkiosk/view_food.css" %}"> 
+{% endblock %} 
+
+{% block maincontent %}
+    <main>
+            <div class="top-container">
+                <div class="change-view-container">
+                    <a href="customers.html" class='nav-links'>
+                        <svg class='list-svg' viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 5.25H18.375" />
+                            <path d="M7 10.5H18.375" />
+                            <path d="M7 15.75H18.375" />
+                            <path d="M2.625 5.25H2.63375" />
+                            <path d="M2.625 10.5H2.63375" />
+                            <path d="M2.625 15.75H2.63375" />
+                        </svg>
+                        List View</a>
+                    <a href="customers-gallery.html" class='nav-links'>
+                        <svg class='list-svg' viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 2.25H2.25V7.5H7.5V2.25Z" />
+                            <path d="M15.75 2.25H10.5V7.5H15.75V2.25Z" />
+                            <path d="M15.75 10.5H10.5V15.75H15.75V10.5Z" />
+                            <path d="M7.5 10.5H2.25V15.75H7.5V10.5Z" />
+                        </svg>
+                        Gallery View</a>
+                </div>
+                <div class="text">
+                    <h1 class='caption'>Customers</h1>
+                    <a href="{% url 'webkiosk:food-create' %}" class='add-customer'>+ Add Customer</a>
+                </div>
+
+                <div class="cards-grid">
+                    {% for customer in customerlist  %}
+                    <a href="{% url 'webkiosk:customer-detail' customer.id %}" class='linking-card'>
+                        <div class="user-card">
+                            <div class="card-img">
+                                <img src="../assets/personimg-1.png" alt="" class='graphic'>
+                            </div>
+                            <div class="card-text">
+                                <h3 class='customer-name'>{{ customer.firstname }} {{ customer.lastname }}</h3>
+                                <p class='status'>City: <span>{{ customer.city }}</span></p>
+                                <p class="remarks">Top Buyer</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}GrubFood - Add food{% endblock  %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/add_form.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}    
+     <main class="main">
+            <div class="graphics-container">
+                <img src="{% static 'webkiosk/images/person.png' %}" alt="Add Customer Image" class='customer-img'>
+            </div>
+            <!-- form starts here -->
+            <div class="add-customer-container">
+                <div class="details">
+                    <h1>Edit Customer</h1>
+                </div>
+                <form method="post" id="form">
+                    {% csrf_token %}
+                    {{ form }} 
+                    <input type='submit' value='submit' class='ac-button'>
+                </form>
+            </div>
+            <ul>
+                {% for message in messages  %}
+                <li>{{ message }} </li>
+                {% endfor %}
+            </ul>
+    </main>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Grubfood WebKiosk ;){% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/main.css" %}" /> 
+    <link rel="stylesheet" href="{% static "webkiosk/view_food.css" %}"> 
+{% endblock %} 
+{% block maincontent %}
+    <main>
+        <div class="top-container">
+            <div class="text">
+                <h1 class='caption'>My Orders</h1>
+                <a href="{% url 'webkiosk:userneworder' %}" class='add-customer'>+ Add Orders</a>
+            </div>
+
+            <div class="cards-grid">
+                {% for order in orders  %}
+                <a href="{% url 'webkiosk:userorderdetails' order.id %}" class='linking-card'>
+                    <div class="user-card">
+                        <div class="card-img">
+                            {% comment %} <img src="../assets/foodimg-1.png" alt="" class='graphic'> {% endcomment %}
+                        </div>
+                        <div class="card-text">
+                            <h3 class='customer-name'>{{ order.food.name }}</h3>
+                            <p class='status'>Quantity: <span>{{ order.quantity }}</span></p>
+                            <p class="remarks">Pending</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

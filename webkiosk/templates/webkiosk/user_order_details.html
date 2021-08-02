@@ -1,0 +1,71 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}{{ food.name }} – Details{% endblock  %}
+
+{% block css_files %} 
+    {% comment %} <link rel="stylesheet" href="{% static "webkiosk/dashboard.css" %}" /> {% endcomment %}
+    <link rel="stylesheet" href="{% static "webkiosk/view_details.css" %}" />
+{% endblock %} 
+
+{% block maincontent %}
+    <a href="{% url 'webkiosk:userorders' %}" class="back-btn">Back to My Orders</a>
+    <main>
+            <div class="top-container">
+                <!-- putting in an extra div to contain the svg -->
+                <div class="customer-img">
+                    <svg class="camera-svg" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M58.4583 48.2917C58.4583 49.6399 57.9227 50.9328 56.9694 51.8861C56.0161 52.8394 54.7231 53.375 53.375 53.375H7.62496C6.27678 53.375 4.98381 52.8394 4.0305 51.8861C3.07719 50.9328 2.54163 49.6399 2.54163 48.2917V20.3333C2.54163 18.9851 3.07719 17.6922 4.0305 16.7389C4.98381 15.7856 6.27678 15.25 7.62496 15.25H17.7916L22.875 7.625H38.125L43.2083 15.25H53.375C54.7231 15.25 56.0161 15.7856 56.9694 16.7389C57.9227 17.6922 58.4583 18.9851 58.4583 20.3333V48.2917Z" />
+                        <path
+                            d="M30.5 43.2083C36.1149 43.2083 40.6667 38.6566 40.6667 33.0417C40.6667 27.4268 36.1149 22.875 30.5 22.875C24.8851 22.875 20.3334 27.4268 20.3334 33.0417C20.3334 38.6566 24.8851 43.2083 30.5 43.2083Z" />
+                    </svg>
+
+                </div>
+            </div>
+            <!-- dummy customer details here, div for layout purposes -->
+            <div class="fields">
+                <div class="data-name">
+                    <div class="details-container">
+                        <h3 class='name'>Order# {{ order.id }}</h3>
+                        <p class='details'>Order Date: <span>{{ order.orderdatetime }}</span></p>
+                        <p class='details'>Special Requests: <span>I want my kakanin to be boxed, please do not put in a
+                                bilao. Thank you</span></p>
+                        <a href="{% url 'webkiosk:userorderdelete' order.id %}" class="delete-btn">Delete</a>
+                    </div>
+                    <a href="{% url 'webkiosk:userorderupdate' order.id %}">
+                        <div class="edit-btn">
+                            <svg class='svg-btn' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" />
+                                <path
+                                    d="M18.5 2.49998C18.8978 2.10216 19.4374 1.87866 20 1.87866C20.5626 1.87866 21.1022 2.10216 21.5 2.49998C21.8978 2.89781 22.1213 3.43737 22.1213 3.99998C22.1213 4.56259 21.8978 5.10216 21.5 5.49998L12 15L8 16L9 12L18.5 2.49998Z" />
+                            </svg>
+
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="data-transactions">
+                    <h3 class='transaction-details'>Orders</h3>
+                    <div class="transaction-data">
+                        <div class="order-no">
+                            <p class='details'>Item</p>
+                            <p class='details'>{{ order.food.name }}</p>
+                        </div>
+                        <div class="order-date">
+                            <p class='date'>Quantity</p>
+                            <p class='date'>{{ order.quantity }}</p>
+                        </div>
+                        <div class="order-date">
+                            <p class='date'>Amount</p>
+                            <p class='date'>{{ order.food.price }}</p>
+                        </div>
+                    </div>
+                    <p class="total">Total Amount: P<span>{{ order.total_price }}</span></p>
+                </div>
+            </div>
+        </main>
+{% endblock %}

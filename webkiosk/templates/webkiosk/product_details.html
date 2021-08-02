@@ -1,0 +1,33 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Grubfood WebKiosk ;){% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/main.css" %}" /> 
+    <link rel="stylesheet" href="{% static "webkiosk/product_details.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <a href="{% url 'webkiosk:products' %}" class="back-btn">Back</a>
+    <main>
+        <div class="product-grid">
+            <div class="display-img">
+                <img src="{{ product.imageURL }}">
+            </div>
+            <div class="caption">
+                <h1>{{ product.name }}</h1>
+                <p>{{ product.description }}</p>
+                <p>P{{ product.price}}</p>
+                <div class="card-buttons">
+                    <a href="{% url 'webkiosk:userneworder' %}" class="add-cart">Order Now</a>
+                <div>
+                <div class="more-details">
+                   <p>Shipping Policy</p>
+                   <p>Returns and Refunds</p>
+                <div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

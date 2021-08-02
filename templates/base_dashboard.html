@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block pagetitle %}{% endblock  %}</title>
+    <link rel="stylesheet" href="{% static "base_dashboard.css" %}">
+    {% block css_files %}{% endblock %}
+</head>
+    
+    
+<body>
+    <div class="page-container">
+        <nav class="nav-bar">
+            <div class="nav-icon" onclick="toggleSidebar()">
+                <img src="{% static 'webkiosk/images/nav-icon.png' %}" alt="Bars" id="nav" />
+            </div>
+            <div class="nb-leftside"></div>
+
+            <a href="" class="user-icon">
+                <svg class="user-icon-svg" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15 15.75V14.25C15 13.4544 14.6839 12.6913 14.1213 12.1287C13.5587 11.5661 12.7956 11.25 12 11.25H6C5.20435 11.25 4.44129 11.5661 3.87868 12.1287C3.31607 12.6913 3 13.4544 3 14.25V15.75" />
+                    <path
+                        d="M9 8.25C10.6569 8.25 12 6.90686 12 5.25C12 3.59315 10.6569 2.25 9 2.25C7.34315 2.25 6 3.59315 6 5.25C6 6.90686 7.34315 8.25 9 8.25Z" />
+                </svg>
+            </a>
+        </nav>
+        {% block maincontent %}
+        <main>
+        </main>
+        {% endblock  %}
+
+        <div id="sidemenu">
+            <div class="sidemenu-title">
+                <div class="sidemenu-img">
+                    <img src="{% static 'webkiosk/images/logo.png' %}"  class='landing-img'/>
+                </div>
+                <!-- close icon here -->
+                <img src="{% static 'webkiosk/images/times.png' %}"  alt="close" id="sidebarIcon" aria-hidden="true"/>
+            </div>
+
+            <a href="{% url 'webkiosk:dashboard' %}" class="link-effect">
+                <div class="sidemenu-link">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.25 6.75L9 1.5L15.75 6.75V15C15.75 15.3978 15.592 15.7794 15.3107 16.0607C15.0294 16.342 14.6478 16.5 14.25 16.5H3.75C3.35218 16.5 2.97064 16.342 2.68934 16.0607C2.40804 15.7794 2.25 15.3978 2.25 15V6.75Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.75 16.5V9H11.25V16.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                    Dashboard
+                </div>
+            </a>
+            <a href="{% url 'webkiosk:customer-list' %}" class="link-effect">
+                <div class="sidemenu-link">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 15.75V14.25C15 13.4544 14.6839 12.6913 14.1213 12.1287C13.5587 11.5661 12.7956 11.25 12 11.25H6C5.20435 11.25 4.44129 11.5661 3.87868 12.1287C3.31607 12.6913 3 13.4544 3 14.25V15.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 8.25C10.6569 8.25 12 6.90686 12 5.25C12 3.59315 10.6569 2.25 9 2.25C7.34315 2.25 6 3.59315 6 5.25C6 6.90686 7.34315 8.25 9 8.25Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Customers
+                </div>
+            </a>
+            <a href="{% url 'webkiosk:food-list' %}" class="link-effect">
+                <div class="sidemenu-link">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0)">
+                    <path d="M6.75 16.5C7.16421 16.5 7.5 16.1642 7.5 15.75C7.5 15.3358 7.16421 15 6.75 15C6.33579 15 6 15.3358 6 15.75C6 16.1642 6.33579 16.5 6.75 16.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 16.5C15.4142 16.5 15.75 16.1642 15.75 15.75C15.75 15.3358 15.4142 15 15 15C14.5858 15 14.25 15.3358 14.25 15.75C14.25 16.1642 14.5858 16.5 15 16.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M0.75 0.75H3.75L5.76 10.7925C5.82858 11.1378 6.01643 11.448 6.29066 11.6687C6.56489 11.8895 6.90802 12.0067 7.26 12H14.55C14.902 12.0067 15.2451 11.8895 15.5193 11.6687C15.7936 11.448 15.9814 11.1378 16.05 10.7925L17.25 4.5H4.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0">
+                    <rect width="18" height="18" fill="white"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+
+                    Foods
+                </div>
+            </a>
+            <a href="{% url 'webkiosk:order-list' %}" class="link-effect">
+                <div class="sidemenu-link">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 13.5H15.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 9H15.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 4.5H15.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.25 13.5H2.25805" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.25 9H2.25805" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.25 4.5H2.25805" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Orders
+                </div>
+            </a>
+            <a href="{% url 'webkiosk:logout' %}" class="link-effect">
+                <div class="sidemenu-logout">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.7701 4.97998C14.7139 5.92407 15.3565 7.12681 15.6168 8.43612C15.8771 9.74543 15.7433 11.1025 15.2323 12.3358C14.7214 13.5691 13.8562 14.6231 12.7462 15.3647C11.6362 16.1063 10.3313 16.5022 8.99634 16.5022C7.66141 16.5022 6.35645 16.1063 5.24647 15.3647C4.13649 14.6231 3.27132 13.5691 2.76036 12.3358C2.24941 11.1025 2.11561 9.74543 2.37588 8.43612C2.63615 7.12681 3.27881 5.92407 4.22259 4.97998" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 1.5V9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Log-out
+                </div>
+            </a>
+        </div>
+    </div>
+    <script src="{% static 'webkiosk/scripts/dashboard.js' %}"></script>
+</body>
+</html>

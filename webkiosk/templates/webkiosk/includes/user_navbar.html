@@ -1,0 +1,42 @@
+{% load static %}
+
+{% block css_files %} 
+<link rel="stylesheet" href="{% static "webkiosk/navbar.css" %}" /> 
+{% endblock %} 
+
+{% block mainnav %}
+<!-- header starts here -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- insert logo here  -->
+    <a href="" id="navbar-logo">
+      <img src="{% static 'webkiosk/images/logo.png' %}" />
+    </a>
+
+    <div class="navbar-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="navbar-menu">
+      <li class="navbar-item">
+        <a href="{% url 'webkiosk:products' %}" class="navbar-links">Products</a>
+      </li>
+      {% comment %} <li class="navbar-item">
+        <a href="{% url 'webkiosk:cart' %}" class="navbar-links">Cart</a>
+      </li> {% endcomment %}
+      <li class="navbar-item">
+        <a href="{% url 'webkiosk:userorders' %}" class="navbar-links">My Orders</a>
+      </li>
+      <li class="navbar-item">
+        <a href="{% url 'webkiosk:userprofile' %}" class="navbar-links">My Profile</a>
+      </li>
+      <li class="navbar-btn">
+        <a href="{% url 'webkiosk:logout' %}" class="button">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock  %}
+
+<script src="{% static 'webkiosk/scripts/main.js' %}"></script>

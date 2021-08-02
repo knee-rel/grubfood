@@ -1,0 +1,25 @@
+{% extends 'base_dashboard.html' %}
+
+{% load static %}
+
+{% block pagetitle %}GrubFood - Add food{% endblock  %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/add_form.css" %}" /> 
+    <link rel="stylesheet" href="{% static "webkiosk/dashboard.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <h2>Add Order Item</h2>
+    <form method='post'>
+        {% csrf_token %}
+        {{ form }}
+        <input type='submit' value='submit'>
+    </form>
+
+    <ul>
+        {% for message in messages  %}
+            <li>{{ message }} </li>
+        {% endfor %}
+    </ul> 
+{% endblock %}

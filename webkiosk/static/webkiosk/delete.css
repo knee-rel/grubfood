@@ -1,0 +1,43 @@
+main {
+  min-height: calc(80vh + 4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cancel {
+  background: red;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+}
+
+.cancel:hover,
+.cancel:active {
+  border: 2px solid red;
+  color: red;
+  background: transparent;
+  transition: 0.3s ease-in;
+}
+
+.confirm {
+  background: green;
+  color: white;
+  padding: 0.5rem 3rem;
+  border-radius: 5px;
+  outline: none;
+}
+
+.confirm:hover,
+.confirm:active {
+  border: 2px solid green;
+  color: green;
+  background: transparent;
+  transition: 0.3s ease-in;
+}
+
+form {
+  text-align: center;
+}

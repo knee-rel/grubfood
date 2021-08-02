@@ -1,0 +1,32 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Grubfood WebKiosk ;){% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/view_food.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <main>
+        <h1>Food Menu</h1>
+        <div class="cards-grid">
+            {% for product in products  %}
+                <a href="{% url 'webkiosk:productdetail' product.id %}" class='linking-card'>
+                    <div class="user-card">
+                        <div class="card-img">
+                        {% comment %} supposed to be product.image.url {% endcomment %}
+                            <img src="{{ product.imageUrl }}" alt="{{ product.name }}" class='graphic' />
+                        </div>
+                        <div class="card-text">
+                            <h3 class='customer-name'>{{ product.name }}</h3>
+                            <p class='status'>P <span>{{ product.price }}</span></p>
+                            <p class="remarks">Bestseller</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            </div>
+    </main>
+{% endblock %}

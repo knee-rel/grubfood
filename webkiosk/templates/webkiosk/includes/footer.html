@@ -1,0 +1,45 @@
+{% load static %}
+
+{% block css_files %} 
+<link rel="stylesheet" href="{% static "webkiosk/footer.css" %}" /> 
+{% endblock %} 
+
+{% block footer %}
+    <footer>
+        <div class="row-1">
+            <h3>Food Manager</h3>
+            <p class="item"> Food Manager is a web app that helps food companies manage customers and their food orders
+                for the delivery service. It also helps the company to keep track of customers and the different food
+                items that they can order from the website. </p>
+            <div class="footer-nav">
+                <p class="download">Download Now</p>
+                <p class="download">License</p>
+            </div>
+
+            <p class='item'>&copy; 2021 Nirel Ibarra and Michelle Co. All rights reserved.</p>
+        </div>
+
+        <div class="row-2">
+            <h3>Site Navigation</h3>
+            <a href="{% url 'webkiosk:index' %}" class='footer-links'>
+                <p class='item'>Home</p>
+            </a>
+            <a href="{% url 'webkiosk:about' %}" class='footer-links'>
+                <p class='item'>About</p>
+            </a>
+            <a href="" class='footer-links'>
+                <p class='item'>Contact</p>
+            </a>
+            <a href="{% url 'webkiosk:login' %}" class='footer-links'>
+                <p class='item'>Sign-In</p>
+            </a>
+        </div>
+
+        <div class="row-3">
+            <h3>Contact Us</h3>
+            <p class="item">(+234) 137632128
+                food-manager@gmail.com
+                Address goes here</p>
+        </div>
+    </footer>
+{% endblock  %}

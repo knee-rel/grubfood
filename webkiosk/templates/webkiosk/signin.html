@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}Sign-in Page{% endblock %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/signin.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <main>
+        <div class="graphics-container">
+            <img src="{% static 'webkiosk/images/logingraphic.png' %}" alt="Login" class='login-image'>
+        </div>
+        <div class="login-container">
+            <div class="text">
+                <h1>Welcome!</h1>
+                <p className="desc">kindly fill in your login details to proceed</p>
+            </div>
+            <form method='POST' id='form'>
+                {% csrf_token %}
+                <input type="text" name="username" value="Username">
+                <input type="password" name="password">
+                <p>Don't have an account? <a href="{% url 'webkiosk:register' %}" class='forgot-pass'>Register</a></p>
+                <input type="submit" value='Sign-In' class="btn-signin">
+                <!-- <button class='signin'>Sign-In</button> -->
+            </form>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
