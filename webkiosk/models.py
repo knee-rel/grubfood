@@ -42,8 +42,11 @@ class Order(models.Model):
     orderdatetime = models.DateTimeField(auto_now_add=True) 
     paymentmode = models.CharField(max_length=2, choices=PAYMENT_MODE_CHOICES) 
 
+    # def __str__(self):
+    #     return f'{self.id}: {self.customer.firstname} {self.customer.lastname}, {self.food.name}, {self.quantity}, {self.paymentmode}, {self.orderdatetime}'
+    
     def __str__(self):
-        return f'{self.id}: {self.customer.firstname} {self.customer.lastname}, {self.food.name}, {self.quantity}, {self.paymentmode}, {self.orderdatetime}'
+        return f'{self.id}: {self.customer.firstname} {self.customer.lastname}, {self.paymentmode}, {self.orderdatetime}'
 
 
 class OrderItem(models.Model):
