@@ -14,7 +14,7 @@
     <h1>Delete Food Item</h1>
     <form method="post">
         {% csrf_token %}
-        {% comment %} <p>Are you sure you want to delete <b>{{ orderitem.food.name }}</b></p> {% endcomment %}
+        <p>Are you sure you want to delete <b>{{ orderitem.food.name }}</b></p>
         <a href="{% url 'webkiosk:userorderdetails' orderitem.id %}" class="cancel">Cancel</a>
         <input type="submit" value="Yes" class = "confirm">
     </form>

@@ -13,11 +13,10 @@ urlpatterns = [
     path('userprofile/', views.userprofile, name='userprofile'),
     
     path('userorders/', views.userorders, name='userorders'),
-    
-    path('userorderdetails/<int:pk>/', views.userorderdetails, name='userorderdetails'),
-    path('userorderdetails/<int:pk>/edit/', views.userorderupdate, name='userorderupdate'),
-    path('userorderdetails/<int:pk>/delete/', views.userorderdelete, name='userorderdelete'),
-    path('userneworder/new/', views.userneworder, name='userneworder'),
+    path('userorders/new/', views.userneworder, name='userneworder'),
+    path('userorders/<int:pk>/', views.userorderdetails, name='userorderdetails'),
+    path('userorders/<int:pk>/edit/', views.userorderupdate, name='userorderupdate'),
+    path('userorders/<int:pk>/delete/', views.userorderdelete, name='userorderdelete'),
     
     path('usernewitem/<int:pk>/new/', views.usernewitem, name='usernewitem'),
     path('usernewitem/<int:pk>/edit/', views.userupdateitem, name='useritemupdate'),

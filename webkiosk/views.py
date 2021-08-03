@@ -117,15 +117,12 @@ def userneworder(request):
 @allowed_users(allowed_roles=['customer'])
 def userorderdetails(request, pk):
     orderinfo = Order.objects.get(id=pk)
-    order = OrderItem.objects.filter(order=pk)
+    order = OrderItem.objects.filter(id=pk)
     totalprice = 0
     for orderitem in order:
         totalprice += orderitem.food.price * orderitem.quantity
     context = {'order': order, 'orderinfo': orderinfo, 'totalprice': totalprice}
     return render(request, 'webkiosk/user_order_details.html', context)
-    # order = Order.objects.get(id=pk)
-    # context = {'order':order}
-    # return render(request, 'webkiosk/user_order_details.html', context)
 
 @login_required(login_url='webkiosk:login')
 @allowed_users(allowed_roles=['customer'])
@@ -172,15 +169,27 @@ def usernewitem(request, pk):
 @allowed_users(allowed_roles=['customer'])
 def userupdateitem(request, pk):
     orderitem = OrderItem.objects.get(id=pk)
-    if request.method == 'GET':
-        form = OrderItemForm(instance=orderitem)
-    elif request.method == 'POST':
-        form = OrderItemForm(request.POST, instance=orderitem)
+    form = OrderItemForm(instance=orderitem)
+    
+    if request.method == 'POST':
+        form = OrderItemForm(request.POST, request.FILES, instance=orderitem)
         if form.is_valid:
             form.save()
             messages.success(request, 'Update Sucessful!')
+            
     context = {'form': form, 'orderitem': orderitem}
     return render(request, 'webkiosk/user_item_new.html', context)
+    
+    # orderitem = OrderItem.objects.get(id=pk)
+    # if request.method == 'GET':
+    #     form = OrderItemForm(instance=orderitem)
+    # elif request.method == 'POST':
+    #     form = OrderItemForm(request.POST, instance=orderitem)
+    #     if form.is_valid:
+    #         form.save()
+    #         messages.success(request, 'Update Sucessful!')
+    # context = {'form': form, 'orderitem': orderitem}
+    # return render(request, 'webkiosk/user_item_new.html', context)
 
 @login_required(login_url='webkiosk:login')
 @allowed_users(allowed_roles=['customer'])
@@ -191,7 +200,7 @@ def userdeleteitem(request, pk):
         return render(request, 'webkiosk/user_item_delete.html', context)
     elif request.method == 'POST':
         orderitem.delete()
-        return redirect('webkiosk:order-list')
+        return redirect('webkiosk:userorders')
 
 
 #############
@@ -239,8 +248,12 @@ def createfood(request):
 @allowed_users(allowed_roles=['admin'])
 def detailfood(request, pk):
     food = Food.objects.get(id=pk)
-    orders = Order.objects.get(id=pk)
-    context = {'food':food, 'orders':orders}
+    # orderinfo = Order.objects.get(id=pk)
+    # orders = OrderItem.objects.filter(food=pk)
+    # for orderitem in order:
+    #     totalprice += orderitem.food.price * orderitem.quantity
+        
+    context = {'food':food}
     return render(request, 'webkiosk/food_detail.html', context)
 
 @login_required(login_url='webkiosk:login')

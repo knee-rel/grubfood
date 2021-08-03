@@ -45,7 +45,3 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         
-# class NewUserOrderForm(ModelForm):
-#     class Meta:
-#         model = Order
-#         fields = ['food', 'quantity', 'paymentmode']
