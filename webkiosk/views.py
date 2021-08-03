@@ -144,7 +144,7 @@ def userorderupdate(request, pk):
 @login_required(login_url='webkiosk:login')
 @allowed_users(allowed_roles=['customer'])
 def userorderdelete(request, pk):
-    order = OrderItem.objects.get(id=pk)
+    order = Order.objects.get(id=pk)
     if request.method == 'GET':
         context = {'order':order}
         return render(request, 'webkiosk/user_delete_order.html', context)
