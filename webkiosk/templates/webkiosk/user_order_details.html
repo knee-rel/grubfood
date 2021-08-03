@@ -66,8 +66,8 @@
                             <p class='date'>{{ item.food.price }}</p>
                         </div>
                         <div class="order-btn">
-                            <a href="{% url 'webkiosk:useritemupdate' orderinfo.id %}" class="date">Edit</a>
-                            <a href="{% url 'webkiosk:useritemdelete' orderinfo.id %}" class="date">Delete</a>
+                            <a href="{% url 'webkiosk:useritemupdate' item.id %}" class="date">Edit</a>
+                            <a href="{% url 'webkiosk:useritemdelete' item.id %}" class="date">Delete</a>
                         </div>
                     </div>
                     {% endfor %}
