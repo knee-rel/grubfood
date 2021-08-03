@@ -11,12 +11,18 @@ urlpatterns = [
     
     #For regular non-admin users
     path('userprofile/', views.userprofile, name='userprofile'),
-    # path('cart/', views.cart, name='cart'),
+    
     path('userorders/', views.userorders, name='userorders'),
+    
     path('userorderdetails/<int:pk>/', views.userorderdetails, name='userorderdetails'),
-    path('userorderdetails/<int:pk>/edit', views.userorderupdate, name='userorderupdate'),
-    path('userorderdetails/<int:pk>/delete', views.userorderdelete, name='userorderdelete'),
-    path('userneworder/', views.userneworder, name='userneworder'),
+    path('userorderdetails/<int:pk>/edit/', views.userorderupdate, name='userorderupdate'),
+    path('userorderdetails/<int:pk>/delete/', views.userorderdelete, name='userorderdelete'),
+    path('userneworder/new/', views.userneworder, name='userneworder'),
+    
+    path('usernewitem/<int:pk>/new/', views.usernewitem, name='usernewitem'),
+    path('usernewitem/<int:pk>/edit/', views.userupdateitem, name='useritemupdate'),
+    path('usernewitem/<int:pk>/delete/', views.userdeleteitem, name='useritemdelete'),
+    
     path('products/', views.products, name='products'),
     path('products/<int:pk>/', views.productdetail, name='productdetail'),
     
@@ -43,4 +49,9 @@ urlpatterns = [
     path('order/<int:pk>/', views.detailorder, name='order-detail'),
     path('order/<int:pk>/edit/', views.updateorder, name='order-edit'),
     path('order/<int:pk>/delete/', views.deleteorder, name='order-delete'),
+    
+    #Order Items
+    path('orderitem/<int:pk>/new/', views.addorderitem, name='orderitem-create'),
+    path('orderitem/<int:pk>/edit/', views.updateorderitem, name='orderitem-update'),
+    path('orderitem/<int:pk>/delete/', views.deleteorderitem, name='orderitem-delete'),
 ]

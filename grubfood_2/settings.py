@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
 		'NAME': 'grubfooddatabase',
-		'USER': 'grubfoodadminuser',
+		'USER': 'admingrubfood',
 		'PASSWORD': '12345678',
 		'HOST': 'localhost',
 		'PORT': '3306',

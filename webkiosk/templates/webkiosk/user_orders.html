@@ -14,6 +14,7 @@
             <div class="text">
                 <h1 class='caption'>My Orders</h1>
                 <a href="{% url 'webkiosk:userneworder' %}" class='add-customer'>+ Add Orders</a>
+                {% comment %} <a href="{% url 'webkiosk:usernewitem' %}" class='add-customer'>+ Add Orders</a> {% endcomment %}
             </div>
 
             <div class="cards-grid">
@@ -24,8 +25,8 @@
                             {% comment %} <img src="../assets/foodimg-1.png" alt="" class='graphic'> {% endcomment %}
                         </div>
                         <div class="card-text">
-                            <h3 class='customer-name'>{{ order.food.name }}</h3>
-                            <p class='status'>Quantity: <span>{{ order.quantity }}</span></p>
+                            <h3 class='customer-name'>MOP: {{ order.paymentmode }}</h3>
+                            <p class='status'>Date: <span>{{ order.orderdatetime }}</span></p>
                             <p class="remarks">Pending</p>
                         </div>
                     </div>

@@ -31,6 +31,14 @@ class OrderItemForm(ModelForm):
             'order': HiddenInput(),
         }
 
+class CustomerOrderForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = ['customer', 'paymentmode']
+        widgets = {
+            'customer': HiddenInput(),
+        }
+
 # FOR THE LOGIN FORM
 class CreateUserForm(UserCreationForm):
     class Meta:

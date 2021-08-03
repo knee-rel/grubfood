@@ -1,0 +1,27 @@
+{% extends 'user_base.html' %}
+
+{% load static %}
+
+{% block pagetitle %}GrubFood - Add Order{% endblock  %}
+
+{% block css_files %} 
+    <link rel="stylesheet" href="{% static "webkiosk/add_form.css" %}" /> 
+    <link rel="stylesheet" href="{% static "webkiosk/dashboard.css" %}" /> 
+{% endblock %} 
+
+{% block maincontent %}
+    <a href="{% url 'webkiosk:userorders' %}" class="back-btn">Back to My Orders</a>
+    <main>
+        <form method='post'>
+            {% csrf_token %}
+            {{ form }}
+            <input type='submit' value='submit'>
+        </form>
+
+        <ul>
+            {% for message in messages  %}
+                <li>{{ message }} </li>
+            {% endfor %}
+        </ul> 
+    </main>
+{% endblock %}
