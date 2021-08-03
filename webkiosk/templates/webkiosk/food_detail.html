@@ -16,18 +16,6 @@
         <li>Price: Php {{ food.price }} </li>
     </ul> {% endcomment %}
     <main>
-            <div class="top-container">
-                <!-- putting in an extra div to contain the svg -->
-                <div class="customer-img">
-                    <svg class="camera-svg" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M58.4583 48.2917C58.4583 49.6399 57.9227 50.9328 56.9694 51.8861C56.0161 52.8394 54.7231 53.375 53.375 53.375H7.62496C6.27678 53.375 4.98381 52.8394 4.0305 51.8861C3.07719 50.9328 2.54163 49.6399 2.54163 48.2917V20.3333C2.54163 18.9851 3.07719 17.6922 4.0305 16.7389C4.98381 15.7856 6.27678 15.25 7.62496 15.25H17.7916L22.875 7.625H38.125L43.2083 15.25H53.375C54.7231 15.25 56.0161 15.7856 56.9694 16.7389C57.9227 17.6922 58.4583 18.9851 58.4583 20.3333V48.2917Z" />
-                        <path
-                            d="M30.5 43.2083C36.1149 43.2083 40.6667 38.6566 40.6667 33.0417C40.6667 27.4268 36.1149 22.875 30.5 22.875C24.8851 22.875 20.3334 27.4268 20.3334 33.0417C20.3334 38.6566 24.8851 43.2083 30.5 43.2083Z" />
-                    </svg>
-
-                </div>
-            </div>
             <!-- dummy customer details here, div for layout purposes -->
             <div class="fields">
                 <div class="data-name">
@@ -51,20 +39,16 @@
 
                 </div>
 
-                <div class="data-transactions">
+                {% comment %} <div class="data-transactions">
                     <h3 class='transaction-details'>Orders</h3>
-                    {% for order in orders  %}{% endfor %}
+                    {% for order in orders %}
                     <div class="transaction-data">
                         <div class="order-no">
-                            <p class='details'>Order #</p>
-                            <p class='details'></p>
-                        </div>
-                        <div class="order-date">
-                            <p class='date'>Order Date</p>
-                            <p class='date'>03/25/2021</p>
+                            <p class='details'>{{ order }}</p>
                         </div>
                     </div>
-                </div>
+                    {% endfor %}
+                </div> {% endcomment %}
             </div>
         </main>
 {% endblock %}
